@@ -39,15 +39,18 @@ class TileCalculator:
     RETURN_NAMES = ("image", "tile_width", "tile_height")
     FUNCTION = "calculate"
     CATEGORY = "image/utils"
+    OUTPUT_NODE = True
 
     def calculate(self, image, tiles_per_width, tiles_per_height, zoom):
-        # Image tensor shape: [B, H, W, C]
         _, height, width, _ = image.shape
-        
+
         tile_width = math.ceil((width * zoom) / tiles_per_width)
         tile_height = math.ceil((height * zoom) / tiles_per_height)
-        
-        return (image, tile_width, tile_height)
+
+        return {
+            "ui": {"text": [f"Tile: {tile_width} x {tile_height}"]},
+            "result": (image, tile_width, tile_height)
+        }
 
 
 NODE_CLASS_MAPPINGS = {
