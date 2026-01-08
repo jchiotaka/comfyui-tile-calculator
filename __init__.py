@@ -25,7 +25,7 @@ class TileCalculator:
                     "step": 1,
                     "display": "number"
                 }),
-                "zoom": ("FLOAT", {
+                "upscale": ("FLOAT", {
                     "default": 1.0,
                     "min": 0.1,
                     "max": 8.0,
@@ -35,21 +35,21 @@ class TileCalculator:
             }
         }
 
-    RETURN_TYPES = ("IMAGE", "INT", "INT")
-    RETURN_NAMES = ("image", "tile_width", "tile_height")
+    RETURN_TYPES = ("IMAGE", "INT", "INT", "FLOAT")
+    RETURN_NAMES = ("image", "tile_width", "tile_height", "upscale")
     FUNCTION = "calculate"
     CATEGORY = "image/utils"
     OUTPUT_NODE = True
 
-    def calculate(self, image, tiles_per_width, tiles_per_height, zoom):
+    def calculate(self, image, tiles_per_width, tiles_per_height, upscale):
         _, height, width, _ = image.shape
 
-        tile_width = math.ceil((width * zoom) / tiles_per_width)
-        tile_height = math.ceil((height * zoom) / tiles_per_height)
+        tile_width = math.ceil((width * upscale) / tiles_per_width)
+        tile_height = math.ceil((height * upscale) / tiles_per_height)
 
         return {
             "ui": {"text": [f"Tile: {tile_width} x {tile_height}"]},
-            "result": (image, tile_width, tile_height)
+            "result": (image, tile_width, tile_height, upscale)
         }
 
 
