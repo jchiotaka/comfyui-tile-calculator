@@ -22,7 +22,7 @@ Search for "Tile Calculator" in the ComfyUI Manager and install.
 
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/YOUR_USERNAME/comfyui-tile-calculator.git
+git clone https://github.com/jchiotaka/comfyui-tile-calculator.git
 ```
 
 ### Option 3: Manual
