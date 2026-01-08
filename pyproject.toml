@@ -14,4 +14,8 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/YOUR_USERNAME/comfyui-tile-calculator"
+Repository = "https://github.com/jchiotaka/comfyui-tile-calculator"
+
+[tool.comfy]
+PublisherId = "ioanimal"
+DisplayName = "Tile Calculator"
